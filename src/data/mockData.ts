@@ -2,6 +2,9 @@ import type { Community, House, RenovationStyle, Room } from "../types";
 import houseH101Plan from "../assets/house-h101-plan.png";
 import houseH101Panorama from "../assets/house-h101-panorama.png";
 import houseH101Vr from "../assets/house-h101-vr.png";
+import panoramaChinese from "../assets/panorama-chinese.png";
+import panoramaLuxury from "../assets/panorama-luxury.png";
+import panoramaModern from "../assets/panorama-modern.png";
 
 export const communities: Community[] = [
   {
@@ -142,6 +145,7 @@ export const renovationStyles: RenovationStyle[] = [
     sofa: "#71827e",
     cabinet: "#f8faf9",
     accent: "#0f8f87",
+    panoramaImage: panoramaModern,
   },
   {
     id: "luxury",
@@ -152,6 +156,7 @@ export const renovationStyles: RenovationStyle[] = [
     sofa: "#48515a",
     cabinet: "#f4efe7",
     accent: "#c8913f",
+    panoramaImage: panoramaLuxury,
   },
   {
     id: "chinese",
@@ -162,6 +167,7 @@ export const renovationStyles: RenovationStyle[] = [
     sofa: "#6c766b",
     cabinet: "#eadcc9",
     accent: "#9c4f38",
+    panoramaImage: panoramaChinese,
   },
 ];
 

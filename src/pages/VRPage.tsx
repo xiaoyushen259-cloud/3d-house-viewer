@@ -27,7 +27,7 @@ export function VRPage() {
           currentRoom={currentRoom}
           imageSrc={house.vrImage}
           imageAlt={`${house.name} 3D看房预览`}
-          panoramaSrc={house.panoramaImage}
+          panoramaSrc={styleConfig.panoramaImage ?? house.panoramaImage}
         />
         <div className="vr-overlay top-left">
           <Link className="back-link vr-back" to={`/house/${house.id}`}>

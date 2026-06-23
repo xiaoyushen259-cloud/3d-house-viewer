@@ -25,6 +25,8 @@ export function AMapView({ communities, selectedCommunityId, onSelectCommunity }
   const mapRef = useRef<AMapInstance | null>(null);
   const markerRef = useRef<Map<string, AMapMarker>>(new Map());
   const onSelectRef = useRef(onSelectCommunity);
+  const amapKey = import.meta.env.VITE_AMAP_KEY;
+  const amapSecurityCode = import.meta.env.VITE_AMAP_SECURITY_CODE;
 
   useEffect(() => {
     onSelectRef.current = onSelectCommunity;
@@ -33,18 +35,18 @@ export function AMapView({ communities, selectedCommunityId, onSelectCommunity }
   useEffect(() => {
     const firstCommunity = communities[0];
 
-    if (!firstCommunity || !containerRef.current) {
+    if (!firstCommunity || !containerRef.current || !amapKey || !amapSecurityCode) {
       return;
     }
 
     window._AMapSecurityConfig = {
-      securityJsCode: import.meta.env.VITE_AMAP_SECURITY_CODE,
+      securityJsCode: amapSecurityCode,
     };
 
     let cancelled = false;
 
     AMapLoader.load({
-      key: import.meta.env.VITE_AMAP_KEY,
+      key: amapKey,
       version: "2.0",
       plugins: ["AMap.Scale", "AMap.ToolBar"],
     }).then((AMap) => {
@@ -88,7 +90,7 @@ export function AMapView({ communities, selectedCommunityId, onSelectCommunity }
       mapRef.current?.destroy();
       mapRef.current = null;
     };
-  }, [communities]);
+  }, [amapKey, amapSecurityCode, communities]);
 
   useEffect(() => {
     const selectedCommunity = communities.find((community) => community.id === selectedCommunityId);
@@ -107,6 +109,24 @@ export function AMapView({ communities, selectedCommunityId, onSelectCommunity }
 
     mapRef.current?.setCenter(selectedCommunity.lnglat);
   }, [communities, selectedCommunityId]);
+
+  if (!amapKey || !amapSecurityCode) {
+    return (
+      <div className="amap-view map-fallback" aria-label="小区位置示意图">
+        {communities.map((community) => (
+          <button
+            key={community.id}
+            className={`fallback-marker ${community.id === selectedCommunityId ? "is-selected" : ""}`}
+            style={{ left: `${community.position.x}%`, top: `${community.position.y}%` }}
+            type="button"
+            onClick={() => onSelectCommunity(community.id)}
+          >
+            <span>{community.name}</span>
+          </button>
+        ))}
+      </div>
+    );
+  }
 
   return <div ref={containerRef} className="amap-view" />;
 }

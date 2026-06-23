@@ -48,6 +48,7 @@ export interface RenovationStyle {
   sofa: string;
   cabinet: string;
   accent: string;
+  panoramaImage?: string;
 }
 
 export interface Room {

@@ -368,6 +368,66 @@ main {
   inset: 0;
 }
 
+.map-fallback {
+  background:
+    radial-gradient(circle at 34% 36%, rgba(47, 125, 92, 0.18) 0 8px, transparent 9px),
+    radial-gradient(circle at 58% 48%, rgba(226, 168, 59, 0.2) 0 8px, transparent 9px),
+    radial-gradient(circle at 44% 62%, rgba(198, 91, 82, 0.18) 0 8px, transparent 9px),
+    linear-gradient(135deg, rgba(255, 253, 244, 0.45), rgba(118, 185, 182, 0.18)),
+    repeating-linear-gradient(0deg, rgba(91, 68, 49, 0.08) 0 1px, transparent 1px 72px),
+    repeating-linear-gradient(90deg, rgba(91, 68, 49, 0.07) 0 1px, transparent 1px 72px),
+    var(--map);
+}
+
+.map-fallback::after {
+  content: "未配置高德地图 Key，当前显示小区位置示意图";
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  max-width: min(320px, calc(100% - 32px));
+  border: 2px solid rgba(91, 68, 49, 0.12);
+  border-radius: var(--radius);
+  background: rgba(255, 253, 244, 0.9);
+  padding: 10px 12px;
+  color: var(--ink-soft);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.fallback-marker {
+  position: absolute;
+  z-index: 2;
+  transform: translate(-50%, -100%);
+  min-width: 118px;
+  border: 2px solid rgba(91, 68, 49, 0.16);
+  border-radius: var(--radius);
+  background: rgba(255, 253, 244, 0.92);
+  box-shadow: 0 10px 24px rgba(69, 88, 75, 0.16);
+  color: var(--leaf-dark);
+  cursor: pointer;
+  padding: 9px 11px;
+  font-weight: 800;
+}
+
+.fallback-marker::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  width: 16px;
+  height: 16px;
+  border: 3px solid #fffdf4;
+  border-radius: 999px;
+  background: var(--leaf);
+  transform: translateX(-50%);
+  box-shadow: 0 4px 10px rgba(69, 88, 75, 0.18);
+}
+
+.fallback-marker.is-selected {
+  border-color: var(--leaf);
+  background: #e9f8ed;
+}
+
 .amap-community-marker {
   display: grid;
   min-width: 126px;

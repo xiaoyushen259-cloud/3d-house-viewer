@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { FavoriteButton } from "../components/FavoriteButton";
 import { MiniMap } from "../components/MiniMap";
 import { ThreeViewer } from "../components/ThreeViewer";
+import { VrIntroPlayer } from "../vr-intro/VrIntroPlayer";
 import { communities, houses, renovationStyles, rooms } from "../data/mockData";
 import type { RenovationStyleId, RoomId } from "../types";
 
@@ -13,6 +14,7 @@ export function VRPage() {
   const community = communities.find((item) => item.id === house.communityId)!;
   const [styleId, setStyleId] = useState<RenovationStyleId>("modern");
   const [currentRoom, setCurrentRoom] = useState<RoomId>("living");
+  const [showIntro, setShowIntro] = useState(true);
 
   const styleConfig = useMemo(
     () => renovationStyles.find((style) => style.id === styleId) ?? renovationStyles[0],
@@ -42,6 +44,17 @@ export function VRPage() {
         <div className="vr-overlay bottom-left">
           <MiniMap rooms={rooms} currentRoom={currentRoom} onSelectRoom={setCurrentRoom} />
         </div>
+
+        {showIntro && house.planImage && (
+          <VrIntroPlayer
+            planImage={house.planImage}
+            solidImage={house.solidImage}
+            houseName={house.name}
+            layoutText={`${house.layout} · ${house.area}㎡ · ${house.orientation}`}
+            onFinish={() => setShowIntro(false)}
+            onSkip={() => setShowIntro(false)}
+          />
+        )}
       </div>
 
       <aside className="vr-side-panel">

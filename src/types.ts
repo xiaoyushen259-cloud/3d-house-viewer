@@ -33,6 +33,7 @@ export interface House {
   cover: string;
   planImage?: string;
   vrImage?: string;
+  solidImage?: string;
   panoramaImage?: string;
   tags: string[];
   highlight: string;

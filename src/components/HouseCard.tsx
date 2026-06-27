@@ -10,7 +10,7 @@ interface HouseCardProps {
 export function HouseCard({ house }: HouseCardProps) {
   return (
     <article className="house-card">
-      <div className="house-cover" style={{ background: house.cover }}>
+      <div className="house-cover" style={{ backgroundImage: house.cover }}>
         <span>{house.roomCount}</span>
       </div>
       <div className="house-card-body">

@@ -109,7 +109,7 @@ export function HomePage() {
           </Link>
         </div>
 
-        <div className="community-hero" style={{ background: selectedCommunity.cover }}>
+        <div className="community-hero" style={{ backgroundImage: selectedCommunity.cover }}>
           <span>{selectedCommunity.district}</span>
         </div>
 

@@ -2,6 +2,10 @@ import type { Community, House, RenovationStyle, Room } from "../types";
 import houseH101Plan from "../assets/house-h101-plan.png";
 import houseH101Panorama from "../assets/house-h101-panorama.png";
 import houseH101Vr from "../assets/house-h101-vr.png";
+import houseH101Solid from "../assets/house-h101-3d.png";
+import houseH101Cover from "../assets/house-h101-cover.png";
+import houseH102Cover from "../assets/house-h102-cover.png";
+import communityChenghuYunjing from "../assets/community-chenghu-yunjing.png";
 import panoramaChinese from "../assets/panorama-chinese.png";
 import panoramaLuxury from "../assets/panorama-luxury.png";
 import panoramaModern from "../assets/panorama-modern.png";
@@ -16,7 +20,7 @@ export const communities: Community[] = [
     position: { x: 34, y: 36 },
     lnglat: [120.18466, 30.18182],
     cover:
-      "linear-gradient(135deg, rgba(12,112,110,.9), rgba(232,188,96,.8)), url('')",
+      `linear-gradient(180deg, rgba(37, 53, 47, 0.02), rgba(37, 53, 47, 0.24)), url(${communityChenghuYunjing})`,
     summary: "近公园和地铁的改善型社区，楼间距宽，适合三口之家和换房用户。",
     tags: ["近地铁", "公园旁", "改善盘"],
     transit: "步行约 8 分钟到 6 号线",
@@ -66,9 +70,10 @@ export const houses: House[] = [
     orientation: "南向",
     floor: "中楼层",
     building: "3 号楼",
-    cover: "linear-gradient(145deg, #edf5f4, #d7ece8 52%, #f2dfaa)",
+    cover: `linear-gradient(180deg, rgba(37, 53, 47, 0.02), rgba(37, 53, 47, 0.22)), url(${houseH101Cover})`,
     planImage: houseH101Plan,
     vrImage: houseH101Vr,
+    solidImage: houseH101Solid,
     panoramaImage: houseH101Panorama,
     tags: ["主卧套房", "双阳台", "动静分区"],
     highlight: "客餐厅一体，南向双开间，适合三口之家长期居住。",
@@ -84,7 +89,7 @@ export const houses: House[] = [
     orientation: "南北通透",
     floor: "高楼层",
     building: "5 号楼",
-    cover: "linear-gradient(145deg, #eef1f4, #d9e2e6 48%, #d6b46e)",
+    cover: `linear-gradient(180deg, rgba(37, 53, 47, 0.02), rgba(37, 53, 47, 0.22)), url(${houseH102Cover})`,
     tags: ["四开间朝南", "独立家政区", "可改书房"],
     highlight: "四房尺度更从容，适合二孩家庭或需要独立书房的用户。",
   },

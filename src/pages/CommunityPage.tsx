@@ -16,7 +16,7 @@ export function CommunityPage() {
       </Link>
 
       <div className="community-detail">
-        <div className="detail-cover" style={{ background: community.cover }}>
+        <div className="detail-cover" style={{ backgroundImage: community.cover }}>
           <span>{community.district}</span>
         </div>
         <div className="detail-info">
